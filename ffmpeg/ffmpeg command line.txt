@@ -1,0 +1,12 @@
+ffmpeg -y -i OPM.mp4 -hls_time 9 -hls_key_info_file enc.keyinfo -hls_playlist_type vod -hls_segment_filename "segmentNo%d.ts" index.m3u8
+
+HLS playlist on gdrive
+https://www.blackhatworld.com/seo/how-stream-videos-from-google-drive-via-hls.1255936/
+https://github.com/vudung45/HLS-GoogleDrive?tab=readme-ov-file
+https://hlsbook.net/how-to-encrypt-hls-video-with-ffmpeg/
+https://stackoverflow.com/questions/32734578/ffmpeg-encryption
+https://ggicci.me/deploying-an-aes-128-encrypted-http-live-stream-hls/
+
+https://stackoverflow.com/questions/23563705/playing-m3u8-form-local-storage
+https://mayur-solanki.medium.com/how-to-create-mpd-or-m3u8-video-file-from-server-using-ffmpeg-97e9e1fbf6a3
+https://github.com/RenderHeads/UnityPlugin-AVProVideo/issues/178

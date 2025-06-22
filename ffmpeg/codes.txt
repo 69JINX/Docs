@@ -1,0 +1,77 @@
+cmd command to change multiple files extension : 
+ > ren *.txt *.doc
+Trim video = 
+ > ffmpeg -i input.mp4 -ss 00:00:00 -to 00:04:06 -c:v copy -c:a copy output.mp4 
+(if problem in output files from upper command, try the below command :-)
+ > ffmpeg -ss 00:01:35.00 -i input.mp4 -t 00:00:10.00 -c copy output.mp4 ( here the timing are not start-end like in the upper command, here the first time 00:01:35.00 is start of cut and 2nd timing 00:00:10.00 is the duration of the output video( eg: 10 sec of video) )
+
+change video dimention : 
+ > ffmpeg -i input_video.mp4 -vf "scale=1280:720" -c:a copy output.mp4
+
+to reduce file(increase 35 to reduce even more and decrease 35 to not) : 
+ > ffmpeg -i input.mp4 -vcodec libx264 -crf 35 output.mp4
+ > Utilize gpu + cuda => ffmpeg -hwaccel cuda -i input.mp4 -vcodec h264_nvenc -preset slow -cq 35 output.mp4 
+
+
+
+batch compress multiple files : 
+ > for %f IN (*.mp4) DO ffmpeg -i "%f" -vcodec libx264 -crf 35 "output\%~nf.mp4"
+ > Utilize gpu + cuda => for %f IN (*.mp4) DO ffmpeg -hwaccel cuda -i "%f" -vcodec h264_nvenc -preset slow -cq 35 "output\%~nf.mp4"
+
+mp4 to mp3 = 
+ > ffmpeg -i file.mp4 file.mp3 (audio length will increase, so use below command :)
+ > ffmpeg -i video.mp4 -vn -sn -c:a mp3 -ab 192k audio.mp3 (source : superuse.com/questions/892996/ffmpeg--doubling-audio-length-when-extracting-from-video)
+
+reduce file gif size when converting from video to gif(twick number of fps and scale to get the appropriate size) : 
+ > ffmpeg -i output.mp4 -filter_complex "fps=10, scale=240:-1" output_compressed.gif
+
+cut a audio : 
+ > ffmpeg -ss <start-point> -t <clip-duration> -i input-file.mp3 -acodec copy output-file.mp3
+Slice a audio into equal separate sec parts 
+ > ffmpeg -i input.mp3 -f segment -segment_time 10 -c copy output_%03d.mp3 (10 for 10 sec)
+
+rotate clockwise : 
+ > ffmpeg -i input.mp4 -vf "transpose=1" output.mp4
+If you want to keep the video quality intact while rotating (slow process) : 
+ > ffmpeg -i input.mp4 -vf "transpose=0" -c:v libx264 -preset veryslow -crf 18 output.mp4
+"transpose=1": Rotate 90 degrees clockwise
+"transpose=2": Rotate 90 degrees counterclockwise
+"transpose=2,transpose=2" : Rotate 180 degrees
+"hflip" : flip horinzotally 
+"hflip" : flip vertically
+https://www.mux.com/articles/rotate-a-video-with-ffmpeg
+
+add audio to video : 
+ > ffmpeg -i input.mp4 -i input.mp3 -c copy -map 0:v:0 -map 1:a:0 output.mp4
+
+join multiple files together :
+ > step 1 : create a videos.txt file. 
+ > context of the videos.txt file :
+ > file 'input1.mp4'
+ > file 'input2.mp4'
+ > file 'input3.mp4'
+ > step 2 : ffmpeg -f concat -i videos.txt -c copy output.mp4
+
+sync out of sync audio in video : 
+ > ffmpeg -i input.mp4 -itsoffset -00:00:21.0 -i input.mp4 -vcodec copy -acodec copy -map 1:0 -map 0:1 output1.mp4 (-00:00:21.0 : value in positive if the audio is behind the video , value in negative if the audio is ahead the video )
+
+create a video of a certain time from an image :
+ > ffmpeg -loop 1 -i image.png -c:v libx264 -t 15 -pix_fmt yuv420p -vf scale=1920:1080 out.mp4
+
+convert 1:1 video to 9:16 by adding black bars on top and bottom (letterboxing) :
+ > ffmpeg -i input.mp4 -vf "pad=iw:iw*16/9:(ow-iw)/2:(oh-ih)/2:black" -c:a copy output.mp4
+ For Batch letterboxing (Save the below command in .bat file and run in the folder where all the videos are present) :
+ > 
+@echo off
+mkdir output
+for %%f in (*.mp4) do (
+  echo Processing %%f...
+  ffmpeg -i "%%f" -vf "pad=iw:iw*16/9:(ow-iw)/2:(oh-ih)/2:black" -c:a copy "output\%%f"
+)
+echo Batch processing complete!
+
+Change Video Dimension while stretching or distorting :
+> ffmpeg -i input.mp4 -vf "scale=1080:1920,setsar=1:1" output.mp4
+
+gif to batch images :
+ > ffmpeg -i input.gif frame_%d.png

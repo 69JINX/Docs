@@ -1,0 +1,13 @@
+https://video.stackexchange.com/questions/4563/how-can-i-crop-a-video-with-ffmpeg
+
+ffmpeg -i input.mp4 -vf "crop=w:h:x:y" output.mp4
+eg: ffmpeg -i input.mp4 -vf "crop=430:859:750:130" -c:a copy out.mp4 (for mobile webview screen recording)
+join afte cut : ffmpeg -i input.mp4 -vf "crop=2450:1080:120:0" output.mp4
+
+Where the options are as follows:
+
+use "-vf" or -"filter:v" - depending on your version of ffmpeg/avconv
+vf indicates the usage of a video filter.
+crop is the name of the filter.
+w:h is the width and height of the output video.
+x:y is the coordinate where the video will be cropped.
