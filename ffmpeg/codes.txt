@@ -13,7 +13,6 @@ to reduce file(increase 35 to reduce even more and decrease 35 to not) :
  > Utilize gpu + cuda => ffmpeg -hwaccel cuda -i input.mp4 -vcodec h264_nvenc -preset slow -cq 35 output.mp4 
 
 
-
 batch compress multiple files : 
  > for %f IN (*.mp4) DO ffmpeg -i "%f" -vcodec libx264 -crf 35 "output\%~nf.mp4"
  > Utilize gpu + cuda => for %f IN (*.mp4) DO ffmpeg -hwaccel cuda -i "%f" -vcodec h264_nvenc -preset slow -cq 35 "output\%~nf.mp4"
@@ -75,3 +74,7 @@ Change Video Dimension while stretching or distorting :
 
 gif to batch images :
  > ffmpeg -i input.gif frame_%d.png
+
+Crop a video :
+ > ffmpeg -i input.mp4 -vf "crop=640:480:0:0" output.mp4
+This command crops a 640 pixels wide by 480 pixels high area, starting from the top-left corner (x=0, y=0) of the input video.
