@@ -18,9 +18,9 @@ The drawback is that, by drawing in shape, we're loosing a lot of the form infor
 But the drawback is to them, they can be little to rigid. You are less inclined to draw according to line of action, simplify your shape and explore different shape designs.
 
 Ques : Which one do you prefer to use ?
-Ans : It's like all of the hybrid combined into one. so depending on the pose, say pose have lots of twisting to it, i'll probably use little bit more of these building blocks Because it will give me more information about how the pose is turned in 3D space. 
-A lots of times when i am animating, i'll just draw in silhouette because these building blocks is already sort of in my mind so i am not too concern about sort reminding myself what those forms are doing. 
-Like i can look at the silhouette of an arm and know that it's essetially a cylinder going back in space. So that comes with time.
+Ans : It's like all of the hybrid combined into one. so depending on the pose, say pose have lots of twisting to it, I'll probably use little bit more of these building blocks Because it will give me more information about how the pose is turned in 3D space. 
+A lots of times when i am animating, I'll just draw in silhouette because these building blocks is already sort of in my mind so i am not too concern about sort reminding myself what those forms are doing. 
+Like i can look at the silhouette of an arm and know that it's essentially a cylinder going back in space. So that comes with time.
 Part of our homework assignment this week is gonna be, drawing the figure with these different versions. 
 
 Balance & Maintaining the center of gravity :
@@ -30,9 +30,37 @@ Draw poses where body is out of balance, this will help you figure out how the b
 
 Scribble & Silhouette are gonna be very important later on down the road. 
 
+Draw cylinders :
 
-Cylider rotation :
-as we start to rotate the cylider towards us, 2 things are gonna happen, 
+start by drawing major body parts like arms, legs, necks and cylinders to get the sense of perspective and forms
+Cylinder rotation :
+as we start to rotate the cylinder towards us, 2 things are gonna happen, 
 1. we're gonna decrease the length of that cylinder 
-2. How circular that elipse is gonna look   
-the more circular the elipse of a circle is, the less we are gonna see of that elipse
+2. How circular that ellipse is gonna look   
+the more circular the ellipse of a circle is, the less we are gonna see of that ellipse
+
+
+Move from cylinders to more accurate shapes :
+We don't have to keep everything just as a cylinder, because our body isn't clearly full of cylinders. 
+First practice drawing arms-legs in cylinders and after that move onto more advance and accurate form shapes.
+like a lower leg would be drawn like this, you can also sculpture it to make it look more realistic :
+// Screenshot 2025-09-19 000414.png
+// Screenshot 2025-09-19 000415.png
+// Screenshot 2025-09-19 000416.png
+like a forearm would be drawn from cylinder like this :
+// Screenshot 2025-09-19 000417.png
+
+Move from blocky shapes to more accurate shapes :
+// Screenshot 2025-09-19 221451.png
+// Screenshot 2025-09-19 221830.png
+
+another things you can do is loosely sketching the figure out with silhouette. this helps drawing the figure faster for animation. 
+// Screenshot 2025-09-21 190200.png
+
+Some artists make the shapes way sharper instead of drawing the shape in curves to make the figure more accurate but it depends on the artists how they draw figure :
+// Screenshot 2025-09-21 190514.png
+
+
+Do turn around of the figures.
+
+Proportions :
