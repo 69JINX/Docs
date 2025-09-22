@@ -1,0 +1,15 @@
+1. Draw the body as flowersack to get the sense of twist and turns.
+2. Avoid using convex shapes because they are really boring and they look like shit. Make them little bit of exciting by staggering them.
+  // Screenshot from 2025-09-22 16-06-16.png
+   like make one side curve and other side linear. Instead of making them smooth, try to make them little bit of sharper. So instead of being a smooth curve for the calf, we will add a sharp point for it.
+  // Screenshot from 2025-09-22 16-11-13.png  
+  ex. look at the shape for the leg, it's so weird. We got the staggering shape for the calf and sharp shape for ankle bone. This is kind of thing you learn by studyng other artists. Bony areas like hands and elbows, we're gonna use sharper shapes.
+  // Screenshot from 2025-09-22 16-42-06.png
+3. create 360 animation of moving cylinders and different shapes.
+
+
+Level 3-4 : silhouette drawing
+
+
+// Screenshot from 2025-09-22 17-29-53.png
+// Screenshot from 2025-09-22 17-30-05.png
