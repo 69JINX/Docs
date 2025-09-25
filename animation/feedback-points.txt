@@ -13,3 +13,15 @@ Level 3-4 : silhouette drawing
 
 // Screenshot from 2025-09-22 17-29-53.png
 // Screenshot from 2025-09-22 17-30-05.png
+
+
+Sometimes, the shape of body (arm/leg) might feel smooth and you might end up drawing them with curves without any staggering points. But you should draw those shapes with blocky shapes and points :
+
+// pics/feedback/banino/Screenshot from 2025-09-25 16-02-30.png
+// pics/feedback/banino/Screenshot from 2025-09-25 16-02-47.png
+
+Back tilt of torso and pelvis is very important, it make the pose feels natural, even in straight standing poses :
+
+// pics/feedback/Gabe/Screenshot from 2025-09-25 17-19-47.png
+// pics/feedback/Gabe/Screenshot from 2025-09-25 17-19-52.png
+
