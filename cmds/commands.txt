@@ -1,0 +1,2 @@
+search file names within a folder :
+>> gci -r -filter "*searchable_term*
