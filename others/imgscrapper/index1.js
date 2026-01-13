@@ -7,7 +7,7 @@ const [, , startPage, endPage] = process.argv;
 
 // CONFIGURABLE VARIABLES
 const baseUrl = "https://example.com/showthread.php?tid=742";
-const outputFile = "./downloaded_urls_742.txt";
+const outputFile = "./downloaded_urls_2334.txt";
 
 const urlSet = new Set(); // to store unique URLs 15346014
 

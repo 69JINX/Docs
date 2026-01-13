@@ -4,6 +4,8 @@ Trim video =
  > ffmpeg -i input.mp4 -ss 00:00:00 -to 00:04:06 -c:v copy -c:a copy output.mp4 
 (if problem in output files from upper command, try the below command :-)
  > ffmpeg -ss 00:01:35.00 -i input.mp4 -t 00:00:10.00 -c copy output.mp4 ( here the timing are not start-end like in the upper command, here the first time 00:01:35.00 is start of cut and 2nd timing 00:00:10.00 is the duration of the output video( eg: 10 sec of video) )
+ > ffmpeg -ss 00:01:48.00 -i input.mp4 -c copy output.mp4 (startFrame - till the end of video [just remove the -t 00:00:10.00])
+
 
 change video dimention : 
  > ffmpeg -i input_video.mp4 -vf "scale=1280:720" -c:a copy output.mp4
