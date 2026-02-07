@@ -80,3 +80,30 @@ gif to batch images :
 Crop a video :
  > ffmpeg -i input.mp4 -vf "crop=640:480:0:0" output.mp4
 This command crops a 640 pixels wide by 480 pixels high area, starting from the top-left corner (x=0, y=0) of the input video.
+
+*********************************************************************************
+add subtitle or write text on video :
+ffmpeg -i output.mp4 -vf "drawtext=text='YOUR_TEXT':enable='between(t,1,2)':fontfile=/path/to/font.ttf:fontsize=60:fontcolor=white:x=(w-text_w)/1.5:y=(h-text_h)/1.3" -c:a copy output2.mp4
+
+Key Parameters
+-i input.mp4: Specifies the input video file.
+-vf "...": Initiates the video filter graph. vf stands for video filter.
+drawtext=...: Activates the drawtext filter.
+text='Your Text Here': The text you want to display.
+enable='between(t,10,20)': This is the core part that controls the timing.
+t is the current timestamp in seconds.
+10 is the start time in seconds.
+20 is the end time in seconds.
+The text will appear when the video time (t) is between 10 and 20 seconds.
+fontfile=/path/to/font.ttf: Specifies the path to a TrueType Font (TTF) file. You must provide a valid path to a font file on your system.
+fontsize=24: Sets the size of the text.
+fontcolor=white: Sets the color of the text.
+x=(w-text_w)/2:y=(h-text_h)/2: Positions the text at the center of the video frame. You can use specific coordinates (e.g., x=10:y=10 for top-left).
+-c:a copy: Copies the audio stream directly without re-encoding, which speeds up the process.
+output.mp4: The resulting output file with the burned-in text. 
+
+Multiple Texts at Different Times :
+ffmpeg -i input.mp4 -vf "drawtext=text='Title 1':enable='between(t,0,5)':x=10:y=10, drawtext=text='Title 2':enable='between(t,5,10)':x=10:y=30, drawtext=text='Title 3':enable='between(t,10,15)':x=10:y=50" -c:a copy output.mp4
+
+
+*********************************************************************************

@@ -1,2 +1,9 @@
 search file names within a folder :
 >> gci -r -filter "*searchable_term*
+
+copy nested folder structure from a folder to another folder without copying files
+>> xcopy "SourcePath" "DestinationPath" /t /e
+
+remove prefix from multiple files :
+>> rename "Copy of *.*" "////////*.*"
+note : Use the same number of forward slashes as the number of characters (including spaces) in the prefix.
