@@ -6,8 +6,8 @@ const path = require("path");
 const [, , startPage, endPage] = process.argv;
 
 // CONFIG
-const baseUrl = "https://example.com/showthread.php?tid=3063";
-const outputDir = "./downloaded_images_509";
+const baseUrl = "https://example.com/showthread.php?tid=944";
+const outputDir = "./downloaded_images_944";
 
 // Ensure output folder exists
 if (!fs.existsSync(outputDir)) {
@@ -32,21 +32,84 @@ function getUniqueFilePath(baseName, extension) {
 /**
  * Download image with auto-renaming
  */
+// async function downloadImage(imageUrl, referer, baseName) {
+//     try {
+//         const extension = path.extname(imageUrl.split("?")[0]) || ".jpg";
+
+//         const filePath = getUniqueFilePath(baseName, extension);
+//         const fileName = path.basename(filePath);
+
+//         const response = await axios.get(imageUrl, {
+//             responseType: "stream",
+//             headers: {
+//                 "Referer": referer,
+//                 "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36",
+
+//                 // 🔥 CRITICAL HEADERS
+//                 "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+//                 "Sec-Fetch-Dest": "image",
+//                 "Sec-Fetch-Mode": "no-cors",
+//                 "Sec-Fetch-Site": "cross-site"
+//             },
+//             validateStatus: () => true
+//         });
+
+//         const contentType = response.headers["content-type"];
+
+//         if (!contentType || contentType.includes("text/html")) {
+//             console.log(`❌ Blocked: ${imageUrl}`);
+//             return;
+//         }
+
+
+//         await new Promise((resolve, reject) => {
+//             const writer = fs.createWriteStream(filePath);
+//             response.data.pipe(writer);
+//             writer.on("finish", resolve);
+//             writer.on("error", reject);
+//         });
+
+//         console.log(`Downloaded: ${fileName}`);
+//     } catch (error) {
+//         console.error(`Failed to download ${imageUrl}: ${error.message}`);
+//     }
+// }
+
 async function downloadImage(imageUrl, referer, baseName) {
     try {
         const extension = path.extname(imageUrl.split("?")[0]) || ".jpg";
 
-        const filePath = getUniqueFilePath(baseName, extension);
+        const filePath = path.join(outputDir, `${baseName}${extension}`);
         const fileName = path.basename(filePath);
+
+        // ✅ SKIP if already exists
+        if (fs.existsSync(filePath)) {
+            console.log(`⏭️ Skipped (already exists): ${fileName}`);
+            return;
+        }
 
         const response = await axios.get(imageUrl, {
             responseType: "stream",
             headers: {
-                Referer: referer,
-                "User-Agent":
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                "Referer": referer,
+                "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36",
+
+                // 🔥 REQUIRED HEADERS
+                "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+                "Sec-Fetch-Dest": "image",
+                "Sec-Fetch-Mode": "no-cors",
+                "Sec-Fetch-Site": "cross-site"
             },
+            validateStatus: () => true
         });
+
+        const contentType = response.headers["content-type"];
+
+        // ❌ Skip fake HTML responses
+        if (!contentType || contentType.includes("text/html")) {
+            console.log(`❌ Blocked: ${imageUrl}`);
+            return;
+        }
 
         await new Promise((resolve, reject) => {
             const writer = fs.createWriteStream(filePath);
@@ -55,9 +118,10 @@ async function downloadImage(imageUrl, referer, baseName) {
             writer.on("error", reject);
         });
 
-        console.log(`Downloaded: ${fileName}`);
+        console.log(`✅ Downloaded: ${fileName}`);
+
     } catch (error) {
-        console.error(`Failed to download ${imageUrl}: ${error.message}`);
+        console.error(`❌ Failed: ${imageUrl}: ${error.message}`);
     }
 }
 

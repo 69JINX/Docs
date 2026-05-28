@@ -6,8 +6,8 @@ const path = require("path");
 const [, , startPage, endPage] = process.argv;
 
 // CONFIGURABLE VARIABLES
-const baseUrl = "https://example.com/showthread.php?tid=742";
-const outputDir = "./downloaded_images_2334_1";
+const baseUrl = "https://example.vc/showthread.php?tid=872";
+const outputDir = "./downloaded_images_872";
 
 // Ensure output folder exists
 if (!fs.existsSync(outputDir)) {
