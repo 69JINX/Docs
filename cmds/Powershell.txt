@@ -1,0 +1,11 @@
+Compare files local to gdrive ( ex. call records ) :
+
+$local = "C:\Stuff\Downloads\Adobe\Call"
+$drive = "G:\My Drive\Avinash\Others\Call Records"
+
+$localFiles = Get-ChildItem $local -File | Select-Object -ExpandProperty Name
+$driveFiles = Get-ChildItem $drive -File | Select-Object -ExpandProperty Name
+
+Compare-Object $localFiles $driveFiles |
+Where-Object {$_.SideIndicator -eq "<="} |
+Select-Object -ExpandProperty InputObject

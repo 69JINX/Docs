@@ -22,6 +22,7 @@ batch compress multiple files :
 mp4 to mp3 = 
  > ffmpeg -i file.mp4 file.mp3 (audio length will increase, so use below command :)
  > ffmpeg -i video.mp4 -vn -sn -c:a mp3 -ab 192k audio.mp3 (source : superuse.com/questions/892996/ffmpeg--doubling-audio-length-when-extracting-from-video)
+ > (for opentoonz) ffmpeg -i input.mp4 -vn -c:a pcm_s16le output.wav
 
 reduce file gif size when converting from video to gif(twick number of fps and scale to get the appropriate size) : 
  > ffmpeg -i output.mp4 -filter_complex "fps=10, scale=240:-1" output_compressed.gif
@@ -34,7 +35,7 @@ Slice a audio into equal separate sec parts
 rotate clockwise : 
  > ffmpeg -i input.mp4 -vf "transpose=1" output.mp4
 If you want to keep the video quality intact while rotating (slow process) : 
- > ffmpeg -i input.mp4 -vf "transpose=0" -c:v libx264 -preset veryslow -crf 18 output.mp4
+ > ffmpeg -i input.mp4 -vf "transpose=1" -c:v libx264 -preset veryslow -crf 18 output.mp4
 "transpose=1": Rotate 90 degrees clockwise
 "transpose=2": Rotate 90 degrees counterclockwise
 "transpose=2,transpose=2" : Rotate 180 degrees
