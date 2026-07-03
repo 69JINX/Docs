@@ -108,3 +108,14 @@ ffmpeg -i input.mp4 -vf "drawtext=text='Title 1':enable='between(t,0,5)':x=10:y=
 
 
 *********************************************************************************
+
+Interpolate Video using Topaz without using Topaz GUI but from cmd : 
+
+"C:\Program Files\Topaz Labs LLC\Topaz Video AI\ffmpeg.exe" "-hide_banner" "-i" "C:\Stuff\Videos\output.mp4" "-sws_flags" "spline+accurate_rnd+full_chroma_int" "-color_trc" "2" "-colorspace" "2" "-color_primaries" "2" "-filter_complex" "tvai_fi=model=apo-8:slowmo=1:rdt=0.01:fps=29.97002997002997:device=0:vram=1:instances=1" "-c:v" "h264_nvenc" "-profile:v" "high" "-pix_fmt" "yuv420p" "-preset" "p7" "-tune" "hq" "-rc" "constqp" "-qp" "25" "-rc-lookahead" "20" "-spatial_aq" "1" "-temporal_aq" "1" "-aq-strength" "15" "-b:v" "0" "-map" "0:a" "-map_metadata:s:a:0" "0:s:i:2" "-c:a" "copy" "-bsf:a:0" "aac_adtstoasc" "-map_metadata" "0" "-map_metadata:s:v" "0:s:v" "-movflags" "frag_keyframe+empty_moov+delay_moov+use_metadata_tags+write_colr" "-metadata" "videoai=Slowmo 100% and framerate changed to 29.97002997002997 using apo-8 ignoring duplicate frames" "C:\Stuff\Videos\output_apo8_temp.mp4"
+
+
+set environment variables if not already set ( because it won't be able to find the models from cmd command) :
+>> set TVAI_MODEL_DIR=C:\ProgramData\Topaz Labs LLC\Topaz Video AI\models
+>> set TVAI_MODEL_DATA_DIR=C:\ProgramData\Topaz Labs LLC\Topaz Video AI\models
+
+chat : https://chatgpt.com/c/6a47c31f-1f8c-83ee-9e6b-4529206bf9b4

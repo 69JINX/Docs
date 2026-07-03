@@ -6,8 +6,9 @@ const path = require("path");
 const [, , startPage, endPage] = process.argv;
 
 // CONFIG
-const baseUrl = "https://example.com/showthread.php?tid=944";
-const outputDir = "./downloaded_images_944";
+const baseUrl = "https:/locam.vc/showthread.php?tid=276";
+const outputDir = "./downloaded_images_276";
+const fileProvider = "jumploads.com";
 
 // Ensure output folder exists
 if (!fs.existsSync(outputDir)) {
@@ -143,7 +144,11 @@ async function scrapeImages() {
                 const postBlock = $(post);
 
                 const image = postBlock.find("img.mycode_img").first();
-                const anchor = postBlock.find("a.mycode_url").first();
+                // const anchor = postBlock.find("a.mycode_url").first();
+
+                const anchor = postBlock
+                    .find(`a.mycode_url[href*="${fileProvider}"]`)
+                    .first();
 
                 const imageUrl = image.attr("src");
                 const anchorHref = anchor.attr("href");

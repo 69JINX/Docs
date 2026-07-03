@@ -6,8 +6,8 @@ const path = require("path");
 const [, , startPage, endPage] = process.argv;
 
 // CONFIGURABLE VARIABLES
-const baseUrl = "https://example.com/showthread.php?tid=944"; 
-const outputFile = "./downloaded_urls_944.txt";
+const baseUrl = "https://example.com/showthread.php?tid=276"; 
+const outputFile = "./downloaded_urls_276.txt";
 
 const urlSet = new Set(); // to store unique URLs 15346014
 
