@@ -119,3 +119,14 @@ set environment variables if not already set ( because it won't be able to find 
 >> set TVAI_MODEL_DATA_DIR=C:\ProgramData\Topaz Labs LLC\Topaz Video AI\models
 
 chat : https://chatgpt.com/c/6a47c31f-1f8c-83ee-9e6b-4529206bf9b4
+
+***********************************************************************************
+
+To join two photos vertically (one on top of the other), use the vstack filter. automatically scales both photos to the same width and ensures compatibility with various image formats.
+
+top bottom :
+ >> ffmpeg -i top.jpg -i bottom.jpg -filter_complex "[0:v]scale=1080:-1[top];[1:v]scale=1080:-1[bottom];[top][bottom]vstack=inputs=2" output1.jpg
+( change scale to change output image size kb ) 
+
+left right :
+>> ffmpeg -i left.jpg -i right.jpg -filter_complex "[0:v]scale=-1:1080[left];[1:v]scale=-1:1080[right];[left][right]hstack=inputs=2" output.jpg
